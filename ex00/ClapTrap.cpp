@@ -9,6 +9,8 @@ ClapTrap::ClapTrap(const ClapTrap& original)
     hit_points = original.hit_points;
     energy_points = original.energy_points;
     attack_damage = original.attack_damage;
+    std::cout << "ClapTrap copy constructer is called! 🐑\n";
+
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& original) // return needed when chaining
@@ -17,6 +19,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& original) // return needed when ch
     hit_points = original.hit_points;
     energy_points = original.energy_points;
     attack_damage = original.attack_damage;
+    std::cout << "ClapTrap assignation operator called 💀\n";
     return (*this);
 }
 
@@ -26,7 +29,7 @@ ClapTrap::ClapTrap(std::string Name)
     hit_points = 10;
     energy_points = 10;
     attack_damage = 0;
-    std::cout << "the ClapTrap has been created\n";
+    std::cout << "the ClapTrap has been created 🐣\n";
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -38,26 +41,30 @@ void ClapTrap::attack(const std::string& target)
         << ", causing " << attack_damage << " points of damage!\n"; 
     }
     else
-        std::cout << "out of energy or dead\n";
+        std::cout << "ClapTrap " << name << " out of energy or dead\n";
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (amount <= hit_points && (hit_points != 0 && energy_points != 0))
+    if (amount <= hit_points && (hit_points > 0 && energy_points > 0))
     {
         hit_points -= amount;
-        std::cout << "ClapTrap " << name << " took damage, HP left " << hit_points << '\n';
+        std::cout << "ClapTrap " << name << " took " << amount << " damage, HP left " << hit_points << '\n';
     }
+    else
+        std::cout << "ClapTrap " << name << " is already dead\n";
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (hit_points != 0 && energy_points != 0)
+    if (hit_points > 0 && energy_points > 0)
     {
         hit_points += amount;
         energy_points--;
         std::cout << "ClapTrap " << name << " repairs itself, getting " << amount <<  " hit points back!\n";
     }
+    else
+        std::cout << "ClapTrap" << name << " can't repair itself not enough Hp or Energy\n";
 }
 
 ClapTrap::~ClapTrap()
