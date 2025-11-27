@@ -10,27 +10,19 @@ ClapTrap::ClapTrap(const ClapTrap& original)
     energy_points = original.energy_points;
     attack_damage = original.attack_damage;
     std::cout << "ClapTrap copy constructer is called! 🐑\n";
-
 }
-
 ClapTrap& ClapTrap::operator=(const ClapTrap& original) // return needed when chaining
 {
     name = original.name;
     hit_points = original.hit_points;
     energy_points = original.energy_points;
     attack_damage = original.attack_damage;
-    std::cout << "ClapTrap assignation operator called 💀\n";
+    std::cout << "ClapTrap copy assignment operator called 💀\n";
     return (*this);
 }
+// ------------------------------------
 
-ClapTrap::ClapTrap(std::string Name)
-{
-    name = Name;
-    hit_points = 10;
-    energy_points = 10;
-    attack_damage = 0;
-    std::cout << "the ClapTrap has been created 🐣\n";
-}
+ClapTrap::ClapTrap(std::string Name) : name(Name), hit_points(10), energy_points(10), attack_damage(0){}
 
 void ClapTrap::attack(const std::string& target)
 {
