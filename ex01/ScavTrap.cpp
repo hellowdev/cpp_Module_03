@@ -1,35 +1,52 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() // he call the parent constructor first so it will initialize name
 {
-    std::cout << "ScavTrap Random default constructer is called!\n";
-    this->setClap(100, 50, 20);
+    std::cout << "ScavTrap Random default constructor is called!🛡️\n";
+    hit_points = 100;
+    energy_points = 50;
+    attack_damage = 20;
 };
 
 ScavTrap::ScavTrap(std::string Name) : ClapTrap(Name)
 {
-    std::cout << "ScavTrap " << getName() << " parametrized constructer is called!\n";   
-    this->setClap(100, 50, 20);
+    std::cout << "ScavTrap " << name << " parametrized constructor is called!🛡️\n";   
+    hit_points = 100;
+    energy_points = 50;
+    attack_damage = 20;
 };
 // ------------COPY ASSIGN & COPY CONSTR-----------------------
 ScavTrap::ScavTrap(const ScavTrap& original) : ClapTrap(original)
 {
-    std::cout << "ScavTrap " << getName() << " copy constructer is called\n";
+    std::cout << "ScavTrap " << name << " copy constructor is called🐑\n";
+}
+
+void ScavTrap::attack(const std::string& target)
+{
+    if (hit_points > 0 && energy_points > 0)
+    {
+        energy_points--;
+        std::cout << "ScavTrap " << name << " attacks 🗡️  " << target \
+        << ", causing " << attack_damage << " points of damage!🩸\n";
+    }
+    else
+        std::cout << "ScavTrap " << name << " out of energy or dead💀\n";
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& original)
 {
     ClapTrap::operator=(original);
-    std::cout << "ScavTrap " << getName() << " copy assignment is called\n";
+    std::cout << "ScavTrap " << name << " copy assignment is called🐑\n";
     return (*this);
 }
 // ---------------------------------------
+
 void ScavTrap::guardGate()
 {
-    std::cout << "ScavTrap " << getName() << " is now in Gate keeper mode\n";
+    std::cout << "ScavTrap " << name << " is now in Gate keeper mode🛑🚧\n";
 }
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "ScavTrap " << getName() << " has been destroyed\n";
+    std::cout << "ScavTrap " << name << " has been destroyed👾\n";
 }

@@ -2,17 +2,14 @@
 
 int main()
 {
-    FragTrap fog("meemy");
+    
+    FragTrap frag("benten");
 
-    fog.attack("enemy");
-    fog.takeDamage(10);
-    fog.beRepaired(100);
-    fog.takeDamage(10);
-
-    FragTrap moo;
-    moo = fog;
-
-    moo.attack("hero");
-    moo.takeDamage(20);
-    moo.beRepaired(-10);
+    frag.attack("enemy");
+    frag.takeDamage(99);
+    frag.beRepaired(10);
+    frag.takeDamage(11);
+    frag.beRepaired(5);
+    frag.attack("someone");
+    frag.highFivesGuys();
 }

@@ -3,25 +3,13 @@
 int main()
 {
 
-    ClapTrap trapy("rabbit");
+    ClapTrap fog("Katrina");
 
-    ClapTrap x(trapy);
+    fog.attack("enemy");
+    fog.takeDamage(9);
+    fog.beRepaired(10);
+    fog.takeDamage(11);
+    fog.beRepaired(5);
+    fog.attack("someone");
     
-    trapy.attack("Enenemy");
-    x = trapy;
-    // trapy.beRepaired(15);
-    trapy.takeDamage(10);
-    trapy.attack("Bos");
-    trapy.attack("nemy");
-    // trapy.attack("Enenemy");
-    trapy.attack("Bos");
-    trapy.takeDamage(10);
-    // trapy.attack("nemy");
-    // trapy.beRepaired(-15);
-    // trapy.attack("Enenemy");
-    // trapy.attack("Bos");
-    // trapy.attack("nemy");
-    // trapy.takeDamage(10);
-
-
 }
